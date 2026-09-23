@@ -4,7 +4,13 @@
 
 Wisp is a lightweight clipboard manager for macOS. It sits in the menu bar, quietly remembers everything you copy (text, rich text, images, files), and hands it back the moment you press **⌃⌘V**. Free and open source.
 
-## Build & install
+## Download
+
+**[⬇ Download Wisp.dmg](https://github.com/narendraio/wispclip/releases/latest/download/Wisp.dmg)** (universal: Apple silicon and Intel, macOS 14+)
+
+Open the DMG and drag Wisp into Applications. Wisp isn't notarized yet, so on first launch go to **System Settings → Privacy & Security** and click **Open Anyway**.
+
+## Build from source
 
 ```bash
 git clone https://github.com/narendraio/wispclip.git
