@@ -1,0 +1,13 @@
+# Build output
+.build/
+build/
+.swiftpm/
+*.xcodeproj/
+xcuserdata/
+DerivedData/
+
+# macOS
+.DS_Store
+
+# Website is kept private (not part of the open-source app)
+website/
