@@ -1,0 +1,37 @@
+name: Bug report
+description: Something in Wisp isn't working right
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Copy something from ...
+        2. Press ⌃⌘V
+        3. ...
+  - type: input
+    id: macos
+    attributes:
+      label: macOS version
+      placeholder: e.g. macOS 15.1
+    validations:
+      required: true
+  - type: dropdown
+    id: chip
+    attributes:
+      label: Mac
+      options: [Apple silicon, Intel]
+  - type: input
+    id: version
+    attributes:
+      label: Wisp version
+      description: Found in Finder → Applications → Wisp → Get Info
+      placeholder: e.g. 1.0

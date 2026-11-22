@@ -1,0 +1,18 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build universal app and DMG
+        run: ./build.sh --dmg
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Wisp.dmg
+          path: build/Wisp.dmg
