@@ -1,0 +1,26 @@
+name: Release
+
+# Push a tag like v1.1 to build Wisp.dmg and attach it to a GitHub release.
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build universal app and DMG
+        run: ./build.sh --dmg
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            gh release upload "$GITHUB_REF_NAME" build/Wisp.dmg --clobber
+          else
+            gh release create "$GITHUB_REF_NAME" build/Wisp.dmg --title "Wisp ${GITHUB_REF_NAME#v}" --generate-notes
+          fi

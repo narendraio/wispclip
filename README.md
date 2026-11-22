@@ -2,13 +2,32 @@
 
 **A clipboard with a memory.** — [wispclip.com](https://wispclip.com)
 
+[![Latest release](https://img.shields.io/github/v/release/narendraio/wispclip)](https://github.com/narendraio/wispclip/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/narendraio/wispclip/total)](https://github.com/narendraio/wispclip/releases)
+[![Build](https://github.com/narendraio/wispclip/actions/workflows/build.yml/badge.svg)](https://github.com/narendraio/wispclip/actions/workflows/build.yml)
+![macOS 14+](https://img.shields.io/badge/macOS-14%2B-black?logo=apple)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+
 Wisp is a lightweight clipboard manager for macOS. It sits in the menu bar, quietly remembers everything you copy (text, rich text, images, files), and hands it back the moment you press **⌃⌘V**. Free and open source.
+
+<!-- Add a screenshot or demo GIF here, e.g. ![Wisp](docs/screenshot.png) -->
+
+## Why Wisp
+
+- **Fast and native.** A tiny native Swift app (a ~1 MB download), no Electron, lives in the menu bar.
+- **Private by design.** Your history stays on your Mac. Wisp makes no network requests, has no accounts, no analytics, and skips copies that password managers mark as concealed.
+- **Built for developers.** Recognizes JSON, SQL, JWTs, UUIDs and colors, and ⌘K transforms format, decode, convert case and more without leaving the keyboard.
+- **Free forever.** MIT licensed, no subscription.
 
 ## Download
 
 **[⬇ Download Wisp.dmg](https://github.com/narendraio/wispclip/releases/latest/download/Wisp.dmg)** (universal: Apple silicon and Intel, macOS 14+)
 
-Open the DMG and drag Wisp into Applications. Wisp isn't notarized yet, so on first launch go to **System Settings → Privacy & Security** and click **Open Anyway**.
+Open the DMG and drag Wisp into Applications. Wisp isn't notarized yet, so on first launch go to **System Settings → Privacy & Security** and click **Open Anyway**. Or, in Terminal:
+
+```bash
+xattr -dr com.apple.quarantine /Applications/Wisp.app
+```
 
 ## Build from source
 
@@ -17,6 +36,7 @@ git clone https://github.com/narendraio/wispclip.git
 cd wispclip
 ./build.sh             # builds build/Wisp.app
 ./build.sh --install   # also copies it to /Applications and launches it
+./build.sh --dmg       # universal app plus build/Wisp.dmg
 ```
 
 Requires macOS 14+ and Xcode / Swift command line tools.
@@ -55,10 +75,23 @@ System Settings → Privacy & Security → Accessibility. Without it, picking an
 - Keeps the last 300 items, plus any number of pinned items and snippets.
 - History is stored in `~/Library/Application Support/ClipBoard/` (images as PNG files). The folder keeps the app's original name so history survives the rename to Wisp.
 - Ignores copies that password managers mark as concealed/transient.
+- No network access, no telemetry. The only link out is the wispclip.com item in the menu.
+
+## FAQ
+
+**Is it really free?** Yes. Wisp is MIT licensed with no paid tier.
+
+**Does it sync between Macs?** No. History never leaves your Mac.
+
+**How do I uninstall it?** Quit Wisp from the menu bar, delete `/Applications/Wisp.app`, and optionally delete `~/Library/Application Support/ClipBoard/` to remove your history.
+
+**Why does macOS say it can't verify the developer?** Wisp isn't notarized yet. See [Download](#download) for how to open it.
 
 ## Contributing
 
-Issues and pull requests are welcome at [github.com/narendraio/wispclip](https://github.com/narendraio/wispclip). For bigger changes, please open an issue first to talk it through.
+Issues and pull requests are welcome at [github.com/narendraio/wispclip](https://github.com/narendraio/wispclip). For bigger changes, please open an issue first to talk it through. See [CONTRIBUTING.md](CONTRIBUTING.md) to get started.
+
+If you like Wisp, a ⭐ on GitHub helps other people find it.
 
 ## License
 
